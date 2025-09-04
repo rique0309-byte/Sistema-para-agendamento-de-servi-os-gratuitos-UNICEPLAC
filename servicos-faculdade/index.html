@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Gratuitos - Faculdade</title>
+    <link rel="stylesheet" href="src/main/webapp/css/style-completo.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Serviços Gratuitos da Faculdade</h1>
+            <p>Cuidando da comunidade com qualidade e dedicação</p>
+            <p><small>💻 Desenvolvido com JSP, Servlets e muito carinho</small></p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="servicos">
+            <h2>Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <h3>🐾 Atendimento Veterinário</h3>
+                    <p>Cuidados completos para seu pet</p>
+                    <div class="info">
+                        <p><strong>Próxima ação:</strong> 15/01/2025</p>
+                        <p><strong>Especialidades:</strong> Clínica Geral, Vacinação, Cirurgias</p>
+                        <p><strong>Horário:</strong> Segunda a Sexta, 8h às 17h</p>
+                    </div>
+                    <a href="#agendamento" class="btn" onclick="mostrarAgendamento('veterinario')">Agendar Horário</a>
+                </div>
+
+                <div class="servico-card">
+                    <h3>🧠 Atendimento Psicológico</h3>
+                    <p>Apoio emocional e terapia</p>
+                    <div class="info">
+                        <p><strong>Próxima ação:</strong> 12/01/2025</p>
+                        <p><strong>Especialidades:</strong> Terapia Individual, Familiar, Grupos</p>
+                        <p><strong>Horário:</strong> Segunda a Sexta, 9h às 18h</p>
+                    </div>
+                    <a href="#agendamento" class="btn" onclick="mostrarAgendamento('psicologia')">Agendar Horário</a>
+                </div>
+
+                <div class="servico-card">
+                    <h3>🦷 Atendimento Odontológico</h3>
+                    <p>Saúde bucal para toda família</p>
+                    <div class="info">
+                        <p><strong>Próxima ação:</strong> 10/01/2025</p>
+                        <p><strong>Especialidades:</strong> Limpeza, Restaurações, Ortodontia</p>
+                        <p><strong>Horário:</strong> Segunda a Sexta, 7h às 16h</p>
+                    </div>
+                    <a href="#agendamento" class="btn" onclick="mostrarAgendamento('odontologia')">Agendar Horário</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-adicional">
+            <h2>Como Funciona</h2>
+            <div class="passos">
+                <div class="passo">
+                    <span class="numero">1</span>
+                    <p>Escolha o serviço desejado</p>
+                </div>
+                <div class="passo">
+                    <span class="numero">2</span>
+                    <p>Preencha o formulário de agendamento</p>
+                </div>
+                <div class="passo">
+                    <span class="numero">3</span>
+                    <p>Aguarde confirmação por email</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contato">
+            <h2>Informações de Contato</h2>
+            <div class="contato-info">
+                <div class="contato-item">
+                    <h4>📍 Endereço</h4>
+                    <p>Rua da Faculdade, 123<br>Centro - Cidade/UF</p>
+                </div>
+                <div class="contato-item">
+                    <h4>📞 Telefone</h4>
+                    <p>(11) 1234-5678</p>
+                </div>
+                <div class="contato-item">
+                    <h4>✉️ Email</h4>
+                    <p>servicos@faculdade.edu.br</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Agendamento (inicialmente oculta) -->
+        <section id="agendamento" class="form-container" style="display: none;">
+            <h2 id="titulo-servico">📋 Agendamento de Serviço</h2>
+            
+            <form class="agendamento-form" onsubmit="processarAgendamento(event)">
+                <div class="form-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="data">Data Preferida:</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="horario">Horário Preferido:</label>
+                    <select id="horario" name="horario" required>
+                        <option value="">Selecione um horário</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                </div>
+                
+                <!-- Campos específicos para veterinário -->
+                <div id="campos-veterinario" style="display: none;">
+                    <div class="form-group">
+                        <label for="animal">Nome do Animal:</label>
+                        <input type="text" id="animal" name="animal">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="especie">Espécie:</label>
+                        <select id="especie" name="especie">
+                            <option value="">Selecione</option>
+                            <option value="cao">Cão</option>
+                            <option value="gato">Gato</option>
+                            <option value="ave">Ave</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" name="observacoes" rows="4" placeholder="Descreva brevemente o motivo do atendimento ou observações importantes"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn">Agendar Atendimento</button>
+                    <button type="button" class="btn btn-secondary" onclick="voltarInicio()">Voltar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Seção de Confirmação (inicialmente oculta) -->
+        <section id="confirmacao" class="confirmacao" style="display: none;">
+            <h2>✅ Agendamento Realizado com Sucesso!</h2>
+            
+            <div class="protocolo" id="protocolo">
+                Protocolo: #AGD123456
+            </div>
+            
+            <div class="detalhes" id="detalhes-agendamento">
+                <h3>Detalhes do Agendamento</h3>
+                <p><strong>Serviço:</strong> <span id="servico-nome">-</span></p>
+                <p><strong>Nome:</strong> <span id="nome-cliente">-</span></p>
+                <p><strong>Email:</strong> <span id="email-cliente">-</span></p>
+                <p><strong>Telefone:</strong> <span id="telefone-cliente">-</span></p>
+                <p><strong>Data:</strong> <span id="data-agendamento">-</span></p>
+                <p><strong>Horário:</strong> <span id="horario-agendamento">-</span></p>
+                
+                <div id="info-veterinario-conf" style="display: none;">
+                    <p><strong>Animal:</strong> <span id="nome-animal-conf">-</span></p>
+                    <p><strong>Espécie:</strong> <span id="especie-animal-conf">-</span></p>
+                </div>
+                
+                <div id="observacoes-container-conf" style="display: none;">
+                    <p><strong>Observações:</strong> <span id="observacoes-texto-conf">-</span></p>
+                </div>
+            </div>
+            
+            <div class="proximos-passos">
+                <h3>📋 Próximos Passos</h3>
+                <ul>
+                    <li>✉️ Você receberá um email de confirmação em breve</li>
+                    <li>⏰ Chegue 15 minutos antes do horário agendado</li>
+                    <li>🆔 Traga um documento de identidade com foto</li>
+                    <li>📞 Em caso de dúvidas, entre em contato conosco</li>
+                    <li>🚫 Para cancelar, ligue com 24h de antecedência</li>
+                </ul>
+            </div>
+            
+            <div class="form-actions">
+                <button class="btn" onclick="voltarInicio()">Voltar ao Início</button>
+                <button class="btn btn-secondary" onclick="novoAgendamento()">Novo Agendamento</button>
+            </div>
+        </section>
+
+        <!-- Seção sobre o projeto -->
+        <section class="info-adicional">
+            <h2>💻 Sobre o Projeto</h2>
+            <div style="text-align: center; padding: 2rem;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    Este sistema foi desenvolvido utilizando <strong>JSP (JavaServer Pages)</strong> e <strong>Servlets</strong>, 
+                    seguindo a arquitetura clássica Java EE com servidor <strong>Apache Tomcat</strong>.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>Tecnologias utilizadas:</strong>
+                </p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1rem 0;">
+                    <span style="background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 5px; border-left: 4px solid #667eea;">☕ Java</span>
+                    <span style="background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 5px; border-left: 4px solid #667eea;">🌐 JSP</span>
+                    <span style="background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 5px; border-left: 4px solid #667eea;">⚙️ Servlets</span>
+                    <span style="background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 5px; border-left: 4px solid #667eea;">🐱 Tomcat</span>
+                    <span style="background: #f8f9fa; padding: 0.5rem 1rem; border-radius: 5px; border-left: 4px solid #667eea;">🎨 CSS3</span>
+                </div>
+                <p style="color: #667eea; font-weight: bold;">
+                    ❤️ Desenvolvido para resolver questões sociais através da tecnologia
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Faculdade - Serviços Gratuitos para a Comunidade</p>
+            <p>Projeto desenvolvido com JSP, Servlets e amor pela comunidade ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        let servicoAtual = '';
+
+        // Função para mostrar formulário de agendamento
+        function mostrarAgendamento(servico) {
+            servicoAtual = servico;
+            const agendamentoSection = document.getElementById('agendamento');
+            const tituloServico = document.getElementById('titulo-servico');
+            const camposVeterinario = document.getElementById('campos-veterinario');
+            
+            // Definir data mínima (hoje)
+            const hoje = new Date().toISOString().split('T')[0];
+            document.getElementById('data').min = hoje;
+            
+            // Configurar título e campos específicos
+            switch(servico) {
+                case 'veterinario':
+                    tituloServico.innerHTML = '🐾 Atendimento Veterinário';
+                    camposVeterinario.style.display = 'block';
+                    break;
+                case 'psicologia':
+                    tituloServico.innerHTML = '🧠 Atendimento Psicológico';
+                    camposVeterinario.style.display = 'none';
+                    break;
+                case 'odontologia':
+                    tituloServico.innerHTML = '🦷 Atendimento Odontológico';
+                    camposVeterinario.style.display = 'none';
+                    break;
+            }
+            
+            agendamentoSection.style.display = 'block';
+            agendamentoSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função para processar agendamento
+        function processarAgendamento(event) {
+            event.preventDefault();
+            
+            // Coletar dados do formulário
+            const formData = new FormData(event.target);
+            const dados = {};
+            
+            for (let [key, value] of formData.entries()) {
+                dados[key] = value;
+            }
+            
+            dados.servico = servicoAtual;
+            
+            // Gerar protocolo
+            const protocolo = 'AGD' + Date.now().toString().slice(-6);
+            
+            // Preencher confirmação
+            document.getElementById('protocolo').textContent = `Protocolo: #${protocolo}`;
+            document.getElementById('servico-nome').textContent = obterNomeServico(servicoAtual);
+            document.getElementById('nome-cliente').textContent = dados.nome;
+            document.getElementById('email-cliente').textContent = dados.email;
+            document.getElementById('telefone-cliente').textContent = dados.telefone;
+            document.getElementById('data-agendamento').textContent = formatarData(dados.data);
+            document.getElementById('horario-agendamento').textContent = dados.horario;
+            
+            // Campos específicos do veterinário
+            if (servicoAtual === 'veterinario' && dados.animal) {
+                document.getElementById('nome-animal-conf').textContent = dados.animal;
+                document.getElementById('especie-animal-conf').textContent = obterNomeEspecie(dados.especie);
+                document.getElementById('info-veterinario-conf').style.display = 'block';
+            }
+            
+            // Observações
+            if (dados.observacoes) {
+                document.getElementById('observacoes-texto-conf').textContent = dados.observacoes;
+                document.getElementById('observacoes-container-conf').style.display = 'block';
+            }
+            
+            // Mostrar confirmação
+            document.getElementById('agendamento').style.display = 'none';
+            document.getElementById('confirmacao').style.display = 'block';
+            document.getElementById('confirmacao').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função para voltar ao início
+        function voltarInicio() {
+            document.getElementById('agendamento').style.display = 'none';
+            document.getElementById('confirmacao').style.display = 'none';
+            document.querySelector('header').scrollIntoView({ behavior: 'smooth' });
+            
+            // Limpar formulário
+            document.querySelector('.agendamento-form').reset();
+        }
+
+        // Função para novo agendamento
+        function novoAgendamento() {
+            document.getElementById('confirmacao').style.display = 'none';
+            document.getElementById('agendamento').style.display = 'block';
+            document.querySelector('.agendamento-form').reset();
+            document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Funções auxiliares
+        function obterNomeServico(servico) {
+            switch(servico) {
+                case 'veterinario': return '🐾 Atendimento Veterinário';
+                case 'psicologia': return '🧠 Atendimento Psicológico';
+                case 'odontologia': return '🦷 Atendimento Odontológico';
+                default: return 'Serviço';
+            }
+        }
+
+        function formatarData(dataString) {
+            const data = new Date(dataString + 'T00:00:00');
+            return data.toLocaleDateString('pt-BR', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function obterNomeEspecie(especie) {
+            switch(especie) {
+                case 'cao': return 'Cão';
+                case 'gato': return 'Gato';
+                case 'ave': return 'Ave';
+                case 'outro': return 'Outro';
+                default: return especie;
+            }
+        }
+
+        // Formatação de telefone
+        document.addEventListener('DOMContentLoaded', function() {
+            const telefoneInput = document.getElementById('telefone');
+            
+            telefoneInput.addEventListener('input', function() {
+                let valor = this.value.replace(/\D/g, '');
+                
+                if (valor.length <= 11) {
+                    valor = valor.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                    valor = valor.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                    valor = valor.replace(/(\d{2})(\d{4})/, '($1) $2');
+                    valor = valor.replace(/(\d{2})/, '($1');
+                }
+                
+                this.value = valor;
+            });
+        });
+    </script>
+</body>
+</html>
